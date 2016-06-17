@@ -1,0 +1,182 @@
+﻿<Page
+    x:Class="CommunistApp.NewsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CommunistApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="Crimson" Margin="0,0,0,-50" BorderThickness="0">
+            <TextBlock VerticalAlignment="Top" Text="资讯一览" FontFamily="YouYuan" 
+                       Margin="5,20,0,10" FontSize="15" Foreground="Azure"  />
+        </Grid>
+        <Pivot Name="NewsPivot" Grid.Row="1">
+            <PivotItem >
+                <PivotItem.Header>
+                    <TextBlock Text="通知公告"></TextBlock>
+                </PivotItem.Header>
+                <ListView  ScrollViewer.VerticalScrollBarVisibility="Hidden" Name="NewsList" IsItemClickEnabled="True" ItemClick="NewsList_ItemClick">
+                    <ListView.ItemTemplate>
+                        <DataTemplate >
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <!--标题-->
+                                    <TextBlock Margin="0,10,0,0" Grid.Row="0" Text="{Binding title}" FontFamily="Microsoft YaHei UI" TextTrimming="WordEllipsis" FontSize="20"/>
+                                    <!--内容概要-->
+                                    <TextBlock Grid.Row="1" Text="{Binding content}" FontFamily="Microsoft YaHei UI" FontSize="15" TextTrimming="WordEllipsis" Foreground="DarkGray"/>
+                                    <Line X1="0" Grid.Row="1" Grid.ColumnSpan="2" X2="900" Y1="0" Y2="1" Height="1" VerticalAlignment="Bottom" Stroke="#E6E6E6" StrokeThickness="1"></Line>
+                                 </Grid>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition /><!--空-->
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <!--阅读数-->
+                                    <TextBlock Grid.Row="1"/>
+                                    <!--日期-->
+                                    <TextBlock Grid.Row="2" Text="{Binding time}" FontFamily="Microsoft YaHei UI" Foreground="DarkGray" TextTrimming="WordEllipsis" FontSize="13"/>
+                                    <Line X1="0" Grid.Row="2" Grid.ColumnSpan="2" X2="900" Y1="0" Y2="1" Height="1" VerticalAlignment="Bottom" Stroke="#E6E6E6" StrokeThickness="1"></Line>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </PivotItem>
+            <PivotItem >
+                <PivotItem.Header>
+                    <TextBlock Text="工作动态"></TextBlock>
+                </PivotItem.Header>
+                <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" Name="WorkList" IsItemClickEnabled="True" ItemClick="WorkList_ItemClick">
+                    <ListView.ItemTemplate>
+                        <DataTemplate >
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="3*"/>
+                                    </Grid.RowDefinitions>
+                                    <!--标题-->
+                                    <TextBlock Margin="0,10,0,0" Grid.Row="0" Text="{Binding title}" FontFamily="Microsoft YaHei UI" TextTrimming="WordEllipsis" FontSize="20"/>
+                                    <!--内容概要-->
+                                    <TextBlock Grid.Row="1" Text="{Binding content}" FontFamily="Microsoft YaHei UI" FontSize="15" Foreground="DarkGray"/>
+                                    <Line X1="0" Grid.Row="1" Grid.ColumnSpan="2" X2="900" Y1="0" Y2="1" Height="1" VerticalAlignment="Bottom" Stroke="#E6E6E6" StrokeThickness="1"></Line>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <!--空-->
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <!--阅读数-->
+                                    <TextBlock Grid.Row="1"/>
+                                    <!--日期-->
+                                    <TextBlock Grid.Row="2" Text="{Binding time}" FontFamily="Microsoft YaHei UI" Foreground="DarkGray" TextTrimming="WordEllipsis" FontSize="13"/>
+                                    <Line X1="0" Grid.Row="2" Grid.ColumnSpan="2" X2="900" Y1="0" Y2="1" Height="1" VerticalAlignment="Bottom" Stroke="#E6E6E6" StrokeThickness="1"></Line>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </PivotItem>
+            <PivotItem >
+                <PivotItem.Header>
+                    <TextBlock Text="基层行动"></TextBlock>
+                </PivotItem.Header>
+                <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" Name="MoveList" IsItemClickEnabled="True" ItemClick="MoveList_ItemClick">
+                    <ListView.ItemTemplate>
+                        <DataTemplate >
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="3*"/>
+                                    </Grid.RowDefinitions>
+                                    <!--标题-->
+                                    <TextBlock Margin="0,10,0,0" Grid.Row="0" Text="{Binding title}" FontFamily="Microsoft YaHei UI" TextTrimming="WordEllipsis" FontSize="20"/>
+                                    <!--内容概要-->
+                                    <TextBlock Grid.Row="1" Text="{Binding content}" FontFamily="Microsoft YaHei UI" FontSize="15" Foreground="DarkGray"/>
+                                    <Line X1="0" Grid.Row="1" Grid.ColumnSpan="2" X2="900" Y1="0" Y2="1" Height="1" VerticalAlignment="Bottom" Stroke="#E6E6E6" StrokeThickness="1"></Line>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <!--空-->
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <!--阅读数-->
+                                    <TextBlock Grid.Row="1"/>
+                                    <!--日期-->
+                                    <TextBlock Grid.Row="2" Text="{Binding time}" FontFamily="Microsoft YaHei UI" Foreground="DarkGray" TextTrimming="WordEllipsis" FontSize="13"/>
+                                    <Line X1="0" Grid.Row="2" Grid.ColumnSpan="2" X2="900" Y1="0" Y2="1" Height="1" VerticalAlignment="Bottom" Stroke="#E6E6E6" StrokeThickness="1"></Line>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </PivotItem>
+            <PivotItem >
+                <PivotItem.Header>
+                    <TextBlock Text="学习资料"></TextBlock>
+                </PivotItem.Header>
+                <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" Name="StudyList" IsItemClickEnabled="True" ItemClick="StudyList_ItemClick">
+                    <ListView.ItemTemplate>
+                        <DataTemplate >
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="3*"/>
+                                    </Grid.RowDefinitions>
+                                    <!--标题-->
+                                    <Line X1="0" Grid.Row="1" Grid.ColumnSpan="2" X2="900" Y1="0" Y2="1" Height="1" VerticalAlignment="Bottom" Stroke="#E6E6E6" StrokeThickness="1"></Line>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <!--空-->
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <!--阅读数-->
+                                    <TextBlock Grid.Row="1"/>
+                                    <!--日期-->
+                                    <TextBlock Grid.Row="2" Text="{Binding time}" FontFamily="Microsoft YaHei UI" Foreground="DarkGray" TextTrimming="WordEllipsis" FontSize="13"/>
+                                    <Line X1="0" Grid.Row="2" Grid.ColumnSpan="2" X2="900" Y1="0" Y2="1" Height="1" VerticalAlignment="Bottom" Stroke="#E6E6E6" StrokeThickness="1"></Line>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>

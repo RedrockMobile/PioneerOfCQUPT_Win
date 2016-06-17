@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="CommunistApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CommunistApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions >
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Frame Name="contentFrame"/>
+        </Grid>
+        <Grid  Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Line X1="0" X2="750" Grid.ColumnSpan="4" Y1="0" Y2="0" Height="1" VerticalAlignment="Top" Stroke="#E6E6E6" StrokeThickness="1"></Line>
+            <Line X1="0" X2="500" Grid.ColumnSpan="4" Y1="0" Y2="0" Height="1" VerticalAlignment="Top" Stroke="#E6E6E6" StrokeThickness="1"></Line>
+            <StackPanel Name="MainPagePanel" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Column="0" Tapped="MainPagePanel_Tapped">
+                <TextBlock Name="MainPageIcon" FontSize="30" FontFamily="Segoe MDL2 Assets" Text ="&#xE80F;"/>
+                <TextBlock Name="MainPageWord" FontFamily="YouYuan" Text="首页" FontSize="15"  />
+            </StackPanel>
+            <StackPanel Name="NewsPagePanel" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Column="1" Tapped="NewsPagePanel_Tapped">
+                <TextBlock Name="NewsPageIcon" FontSize="30" FontFamily="Segoe MDL2 Assets" Text ="&#xE753;" Foreground="DarkGray"/>
+                <TextBlock Name="NewsPageWord" FontFamily="YouYuan" Text="资讯" FontSize="15" Foreground="DarkGray"/>
+            </StackPanel>
+            <StackPanel Name="CommunityPagePanel" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Column="2" Tapped="CommunityPagePanel_Tapped">
+                <TextBlock Name="CommunityPageIcon" FontSize="30" FontFamily="Segoe MDL2 Assets" Text ="&#xE716;" Foreground="DarkGray"/>
+                <TextBlock Name="CommunityPageWord" FontFamily="YouYuan" Text="心得" FontSize="15" Foreground="DarkGray"/>
+            </StackPanel>
+            <StackPanel Name="PersonalPagePanel" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Column="3" Tapped="PersonalPagePanel_Tapped">
+                <TextBlock Name="PersonalPageIcon" FontSize="30" FontFamily="Segoe MDL2 Assets" Text ="&#xE8D4;" Foreground="DarkGray"/>
+                <TextBlock Name="PersonalPageWord" FontFamily="YouYuan" Text="个人" FontSize="15" Foreground="DarkGray"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
