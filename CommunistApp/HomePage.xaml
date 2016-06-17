@@ -49,7 +49,7 @@
                 <GridView  ScrollViewer.VerticalScrollBarVisibility="Hidden" Name="SixItemGridView" IsItemClickEnabled="True" SelectionMode="None" ItemClick="SixItem_ItemClick">
                     <GridView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Margin="3">
+                            <Grid Margin="5">
                                 <!--<Rectangle Height="150" Width="{Binding Width, Converter={StaticResource HomeGridViewItemWidthConverter}, ElementName=SixItemGridView, Mode=OneWay}" Fill="Red" StrokeThickness="3" RadiusX="10" RadiusY="10"/>-->
                                 <Rectangle Height="120" Width="120" Fill="Red" StrokeThickness="3" RadiusX="10" RadiusY="10"/>
                                 <TextBlock Name="HomeItemTextBlock" Text="{Binding ItemName}" VerticalAlignment="Center" Margin="10" Foreground="White" FontFamily="Microsoft YaHei UI" FontSize="20"/>
