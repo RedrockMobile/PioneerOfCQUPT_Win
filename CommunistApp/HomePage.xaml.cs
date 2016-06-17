@@ -32,9 +32,9 @@ namespace CommunistApp
     {
         List<Item> sixItem = new List<Item>()
         {
-            new Item {ItemName="党章党规" ,ItemURL="http://lxyz.12371.cn/dzdg/"},
-            new Item {ItemName="系列讲话" ,ItemURL="http://www.12371.cn/special/xjpzyls/xxxjpzyls/" },
-            new Item {ItemName="合格党员" ,ItemURL="http://lxyz.12371.cn/xjdx/" },
+            new Item {ItemName="学党章党规" ,ItemURL="http://lxyz.12371.cn/dzdg/"},
+            new Item {ItemName="学系列讲话" ,ItemURL="http://www.12371.cn/special/xjpzyls/xxxjpzyls/" },
+            new Item {ItemName="做合格党员" ,ItemURL="http://lxyz.12371.cn/xjdx/" },
             new Item {ItemName="网络活动" ,ItemURL="https://redrock.cqupt.edu.cn/lxyz_activity/" },
             new Item {ItemName="先进典型" ,ItemURL="http://lxyz.12371.cn/xjdx/" },
             new Item {ItemName="经典影像" ,ItemURL="http://lxyz.12371.cn/jdyx/" }

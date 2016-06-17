@@ -75,15 +75,15 @@
             </StackPanel>
             <StackPanel Name="NewsPagePanel" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Column="1" Tapped="NewsPagePanel_Tapped">
                 <TextBlock Name="NewsPageIcon" FontSize="30" FontFamily="Segoe MDL2 Assets" Text ="&#xE753;" Foreground="DarkGray"/>
-                <TextBlock Name="NewsPageWord" FontFamily="YouYuan" Text="资讯" FontSize="15" Foreground="DarkGray"/>
+                <TextBlock Name="NewsPageWord" FontFamily="YouYuan" Text="动态" FontSize="15" Foreground="DarkGray"/>
             </StackPanel>
             <StackPanel Name="CommunityPagePanel" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Column="2" Tapped="CommunityPagePanel_Tapped">
                 <TextBlock Name="CommunityPageIcon" FontSize="30" FontFamily="Segoe MDL2 Assets" Text ="&#xE716;" Foreground="DarkGray"/>
-                <TextBlock Name="CommunityPageWord" FontFamily="YouYuan" Text="心得" FontSize="15" Foreground="DarkGray"/>
+                <TextBlock Name="CommunityPageWord" FontFamily="YouYuan" Text="资料" FontSize="15" Foreground="DarkGray"/>
             </StackPanel>
             <StackPanel Name="PersonalPagePanel" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Column="3" Tapped="PersonalPagePanel_Tapped">
                 <TextBlock Name="PersonalPageIcon" FontSize="30" FontFamily="Segoe MDL2 Assets" Text ="&#xE8D4;" Foreground="DarkGray"/>
-                <TextBlock Name="PersonalPageWord" FontFamily="YouYuan" Text="个人" FontSize="15" Foreground="DarkGray"/>
+                <TextBlock Name="PersonalPageWord" FontFamily="YouYuan" Text="我的" FontSize="15" Foreground="DarkGray"/>
             </StackPanel>
         </Grid>
     </Grid>
