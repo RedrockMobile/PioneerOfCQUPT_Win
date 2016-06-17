@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -31,27 +32,34 @@ namespace CommunistApp
     {
         List<Item> sixItem = new List<Item>()
         {
-            new Item {ItemName="党章党规" },
-            new Item {ItemName="系列讲话" },
-            new Item {ItemName="合格党员" },
-            new Item {ItemName="网络活动" },
-            new Item {ItemName="先进典范" },
-            new Item {ItemName="经典影像" }
+            new Item {ItemName="党章党规" ,ItemURL="http://lxyz.12371.cn/dzdg/"},
+            new Item {ItemName="系列讲话" ,ItemURL="http://www.12371.cn/special/xjpzyls/xxxjpzyls/" },
+            new Item {ItemName="合格党员" ,ItemURL="http://lxyz.12371.cn/xjdx/" },
+            new Item {ItemName="网络活动" ,ItemURL="https://redrock.cqupt.edu.cn/lxyz_activity/" },
+            new Item {ItemName="先进典型" ,ItemURL="http://lxyz.12371.cn/xjdx/" },
+            new Item {ItemName="经典影像" ,ItemURL="http://lxyz.12371.cn/jdyx/" }
         };
         public HomePage()
         {
             this.InitializeComponent();
-            SixItem.ItemsSource = sixItem;
-            GetPic();
+            SixItemGridView.ItemsSource = sixItem;
+            //GetPic();
             this.fvCenter.ItemsSource = PicData;
         }
         string tempString;
+        //TODO:FlipView的自动播放+循环播放，参考约。
         List<Pic> PicData = new List<Pic>();
-        
+        //List<Pic> PicData = new List<Pic>()
+        //{
+        //    new Pic {imgurl ="http://202.202.43.42/lxyz/Public/uploads/2016-06-07/575676790d7db.jpg",link="http://202.202.43.42/lxyz/index.php?m=Home&amp;c=Article&amp;a=index&amp;id=19",title="学校召开“两学一做”学习教育动员部署会" },
+        //    new Pic {imgurl ="http://202.202.43.42/lxyz/Public/uploads/2016-06-07/575676790d7db.jpg",link="http://202.202.43.42/lxyz/index.php?m=Home&amp;c=Article&amp;a=index&amp;id=19",title="学校召开“两学一做”学习教育动员部署会" },
+        //    new Pic {imgurl ="http://202.202.43.42/lxyz/Public/uploads/2016-06-07/575676790d7db.jpg",link="http://202.202.43.42/lxyz/index.php?m=Home&amp;c=Article&amp;a=index&amp;id=19",title="学校召开“两学一做”学习教育动员部署会" },
+        //};
+
         void GetPic()
         {
             HttpClient httpClient1 = new HttpClient();
-            string uri = "http://202.202.43.42/lxyz/index.php?m=Home&c=index&a=mobilepic";            
+            string uri = "http://202.202.43.42/lxyz/index.php?m=Home&c=index&a=mobilepic";
             System.Net.Http.HttpResponseMessage response;
             response = httpClient1.GetAsync(new Uri(uri)).Result;
             if (response.StatusCode == HttpStatusCode.OK)
@@ -62,16 +70,18 @@ namespace CommunistApp
             JArray jArray = (JArray)JsonConvert.DeserializeObject(json2);
 
             PicData = JsonConvert.DeserializeObject<List<Pic>>(jArray.ToString());
-            
-        }
-        
-        private void SixItem_ItemClick(object sender, ItemClickEventArgs e)
-        {
 
+        }
+
+        private async void SixItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            bool success = await Launcher.LaunchUriAsync(new Uri(((Item)e.ClickedItem).ItemURL));
         }
         public class Item
         {
             public string ItemName { get; set; }
+            public string ItemURL { get; set; }
+
         }
         public class Pic
         {
@@ -79,6 +89,8 @@ namespace CommunistApp
             public string link { get; set; }
             public string imgurl { get; set; }
         }
+
+
     }
 }
 

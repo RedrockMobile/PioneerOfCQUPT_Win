@@ -28,6 +28,15 @@ namespace CommunistApp
         {
             this.InitializeComponent();
             contentFrame.Navigate(typeof(HomePage));
+            this.SizeChanged += (s, e) =>
+            {
+                var state = "VisualState000";
+                if (e.NewSize.Width > 550)
+                {
+                     state = "VisualState550";
+                }
+                VisualStateManager.GoToState(this, state, true);
+            };
         }
         //忘了咋用blend 暂时这么着吧
         //Panel_Tap后类似于切换状态
@@ -41,12 +50,18 @@ namespace CommunistApp
             CommunityPageWord.Foreground = new SolidColorBrush(Colors.DarkGray);
             PersonalPageIcon.Foreground = new SolidColorBrush(Colors.DarkGray);
             PersonalPageWord.Foreground = new SolidColorBrush(Colors.DarkGray);
+
+            LMainPageIcon.Foreground = new SolidColorBrush(Colors.DarkGray);
+            LNewsPageIcon.Foreground = new SolidColorBrush(Colors.DarkGray);
+            LCommunityPageIcon.Foreground = new SolidColorBrush(Colors.DarkGray);
+            LPersonalPageIcon.Foreground = new SolidColorBrush(Colors.DarkGray);
         }
 
         private void MainPagePanel_Tapped(object sender, TappedRoutedEventArgs e)
         {
             CanelColorEvent();
             MainPageIcon.Foreground = new SolidColorBrush(Colors.Black);
+            LMainPageIcon.Foreground = new SolidColorBrush(Colors.Black);
             MainPageWord.Foreground = new SolidColorBrush(Colors.Black);
             contentFrame.Navigate(typeof(HomePage));
         }
@@ -55,6 +70,7 @@ namespace CommunistApp
         {
             CanelColorEvent();
             NewsPageIcon.Foreground = new SolidColorBrush(Colors.Black);
+            LNewsPageIcon.Foreground = new SolidColorBrush(Colors.Black);
             NewsPageWord.Foreground = new SolidColorBrush(Colors.Black);
             contentFrame.Navigate(typeof(NewsPage));
         }
@@ -63,6 +79,7 @@ namespace CommunistApp
         {
             CanelColorEvent();
             CommunityPageIcon.Foreground = new SolidColorBrush(Colors.Black);
+            LCommunityPageIcon.Foreground = new SolidColorBrush(Colors.Black);
             CommunityPageWord.Foreground = new SolidColorBrush(Colors.Black);
             contentFrame.Navigate(typeof(CommunityPage));
         }
@@ -71,6 +88,7 @@ namespace CommunistApp
         {
             CanelColorEvent();
             PersonalPageIcon.Foreground = new SolidColorBrush(Colors.Black);
+            LPersonalPageIcon.Foreground = new SolidColorBrush(Colors.Black);
             PersonalPageWord.Foreground = new SolidColorBrush(Colors.Black);
             contentFrame.Navigate(typeof(PersonalPage));
         }
