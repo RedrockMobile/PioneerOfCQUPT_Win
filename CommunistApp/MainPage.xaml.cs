@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -33,10 +34,22 @@ namespace CommunistApp
                 var state = "VisualState000";
                 if (e.NewSize.Width > 550)
                 {
-                     state = "VisualState550";
+                    state = "VisualState550";
                 }
                 VisualStateManager.GoToState(this, state, true);
             };
+            if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
+            {
+                Utils.ShowSystemTrayAsync(Color.FromArgb(255, 247, 59, 53), Colors.White);
+            }s
+            else
+            {
+                var view = ApplicationView.GetForCurrentView();
+                view.TitleBar.BackgroundColor = Color.FromArgb(255, 247, 59, 53);
+                view.TitleBar.ButtonBackgroundColor = Color.FromArgb(255, 247, 59, 53);
+                view.TitleBar.ButtonHoverBackgroundColor = Color.FromArgb(255, 234, 53, 48);
+                view.TitleBar.ButtonPressedBackgroundColor = Color.FromArgb(255, 206, 47, 42);
+            }
         }
         //忘了咋用blend 暂时这么着吧
         //Panel_Tap后类似于切换状态
