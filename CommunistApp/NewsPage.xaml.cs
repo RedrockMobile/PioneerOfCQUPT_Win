@@ -26,7 +26,6 @@ namespace CommunistApp
     /// </summary>
     public sealed partial class NewsPage : Page
     {
-        List<KeyValuePair<String, String>> paramList = new List<KeyValuePair<String, String>>();
         public NewsPage()
         {
             this.InitializeComponent();
@@ -40,15 +39,14 @@ namespace CommunistApp
             GetNewsData("4");
             GetNewsData("5");
         }
-        void GetNewsData(string id)
+
+        async void GetNewsData(string id)
         {
+            List<KeyValuePair<String, String>> paramList = new List<KeyValuePair<String, String>>();
             paramList.Add(new KeyValuePair<string, string>("id", id));
-            HttpClient httpClient = new HttpClient();
-            string uri = $"http://202.202.43.42/lxyz/index.php?m=Home&c=index&a=mobilearticlelist";
-            System.Net.Http.HttpResponseMessage response;
-            response = httpClient.PostAsync(new Uri(uri), new FormUrlEncodedContent(paramList)).Result;
-            if (response.StatusCode == HttpStatusCode.OK)
-                tempString = response.Content.ReadAsStringAsync().Result;
+            string uri = "http://202.202.43.42/lxyz/index.php?m=Home&c=index&a=mobilearticlelist";
+            tempString = await NetWork.getHttpWebRequest(uri, paramList, fulluri: true);
+
 
             tempString.Replace("\r\n\r\n", " ");
             tempString.Replace("&ldquo;", " ");

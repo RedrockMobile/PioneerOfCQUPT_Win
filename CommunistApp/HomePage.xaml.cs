@@ -39,16 +39,9 @@ namespace CommunistApp
             new Item {ItemName="先进典型" ,ItemURL="http://lxyz.12371.cn/xjdx/" },
             new Item {ItemName="经典影像" ,ItemURL="http://lxyz.12371.cn/jdyx/" }
         };
-        public HomePage()
-        {
-            this.InitializeComponent();
-            SixItemGridView.ItemsSource = sixItem;
-            //GetPic();
-            this.fvCenter.ItemsSource = PicData;
-        }
         string tempString;
         //TODO:FlipView的自动播放+循环播放，参考约。
-        List<Pic> PicData = new List<Pic>();
+        ObservableCollection<Pic> PicData = new ObservableCollection<Pic>();
         //List<Pic> PicData = new List<Pic>()
         //{
         //    new Pic {imgurl ="http://202.202.43.42/lxyz/Public/uploads/2016-06-07/575676790d7db.jpg",link="http://202.202.43.42/lxyz/index.php?m=Home&amp;c=Article&amp;a=index&amp;id=19",title="学校召开“两学一做”学习教育动员部署会" },
@@ -56,20 +49,27 @@ namespace CommunistApp
         //    new Pic {imgurl ="http://202.202.43.42/lxyz/Public/uploads/2016-06-07/575676790d7db.jpg",link="http://202.202.43.42/lxyz/index.php?m=Home&amp;c=Article&amp;a=index&amp;id=19",title="学校召开“两学一做”学习教育动员部署会" },
         //};
 
-        void GetPic()
+
+        public HomePage()
+        {
+            this.InitializeComponent();
+            SixItemGridView.ItemsSource = sixItem;
+            GetPic();
+
+        }
+
+        async void GetPic()
         {
             HttpClient httpClient1 = new HttpClient();
             string uri = "http://202.202.43.42/lxyz/index.php?m=Home&c=index&a=mobilepic";
-            System.Net.Http.HttpResponseMessage response;
-            response = httpClient1.GetAsync(new Uri(uri)).Result;
-            if (response.StatusCode == HttpStatusCode.OK)
-                tempString = response.Content.ReadAsStringAsync().Result;
+            tempString = await NetWork.getHttpWebRequest(uri, PostORGet: 1, fulluri: true);
 
             JObject jArray2 = (JObject)JsonConvert.DeserializeObject(tempString);
             string json2 = jArray2["data"].ToString();
             JArray jArray = (JArray)JsonConvert.DeserializeObject(json2);
 
-            PicData = JsonConvert.DeserializeObject<List<Pic>>(jArray.ToString());
+            PicData = JsonConvert.DeserializeObject<ObservableCollection<Pic>>(jArray.ToString());
+            this.fvCenter.ItemsSource = PicData;
 
         }
 
