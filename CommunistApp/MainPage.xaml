@@ -40,7 +40,7 @@
             <ListView>
                 <ListViewItem Width="48" Height="48" Tapped="MainPagePanel_Tapped">
                     <StackPanel Name="LMainPagePanel" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Column="0" Tapped="MainPagePanel_Tapped">
-                        <TextBlock Name="LMainPageIcon" FontSize="20" FontFamily="Segoe MDL2 Assets" Text ="&#xE80F;"/>
+                        <TextBlock Name="LMainPageIcon" FontSize="20" FontFamily="Segoe MDL2 Assets" Text ="&#xE80F;" Foreground="#f96259"/>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem Width="48" Height="48" Tapped="NewsPagePanel_Tapped">
@@ -70,8 +70,8 @@
             <Line X1="0" X2="750" Grid.ColumnSpan="4" Y1="0" Y2="0" Height="1" VerticalAlignment="Top" Stroke="#E6E6E6" StrokeThickness="1"></Line>
             <Line X1="0" X2="500" Grid.ColumnSpan="4" Y1="0" Y2="0" Height="1" VerticalAlignment="Top" Stroke="#E6E6E6" StrokeThickness="1"></Line>
             <StackPanel Name="MainPagePanel" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Column="0" Tapped="MainPagePanel_Tapped">
-                <TextBlock Name="MainPageIcon" FontSize="30" FontFamily="Segoe MDL2 Assets" Text ="&#xE80F;"/>
-                <TextBlock Name="MainPageWord" FontFamily="YouYuan" Text="首页" FontSize="15"  />
+                <TextBlock Name="MainPageIcon" FontSize="30" FontFamily="Segoe MDL2 Assets" Text ="&#xE80F;" Foreground="#f96259"/>
+                <TextBlock Name="MainPageWord" FontFamily="YouYuan" Text="首页" FontSize="15" Foreground="#f96259" />
             </StackPanel>
             <StackPanel Name="NewsPagePanel" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Column="1" Tapped="NewsPagePanel_Tapped">
                 <TextBlock Name="NewsPageIcon" FontSize="30" FontFamily="Segoe MDL2 Assets" Text ="&#xE753;" Foreground="DarkGray"/>
