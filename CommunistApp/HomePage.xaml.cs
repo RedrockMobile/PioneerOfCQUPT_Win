@@ -63,16 +63,24 @@ namespace CommunistApp
             HttpClient httpClient1 = new HttpClient();
             string uri = "http://202.202.43.42/lxyz/index.php?m=Home&c=index&a=mobilepic";
             tempString = await NetWork.getHttpWebRequest(uri, PostORGet: 1, fulluri: true);
+            if (tempString != "")
+            {
+                try
+                {
+                    JObject job = JObject.Parse(tempString);
+                    if (job["status"].ToString() == "200")
+                    {
+                        JObject jArray2 = (JObject)JsonConvert.DeserializeObject(tempString);
+                        string json2 = jArray2["data"].ToString();
+                        JArray jArray = (JArray)JsonConvert.DeserializeObject(json2);
 
-            JObject jArray2 = (JObject)JsonConvert.DeserializeObject(tempString);
-            string json2 = jArray2["data"].ToString();
-            JArray jArray = (JArray)JsonConvert.DeserializeObject(json2);
-
-            PicData = JsonConvert.DeserializeObject<ObservableCollection<Pic>>(jArray.ToString());
-            this.fvCenter.ItemsSource = PicData;
-
+                        PicData = JsonConvert.DeserializeObject<ObservableCollection<Pic>>(jArray.ToString());
+                        this.fvCenter.ItemsSource = PicData;
+                    }
+                }
+                catch (Exception) { }
+            }
         }
-
         private async void SixItem_ItemClick(object sender, ItemClickEventArgs e)
         {
             bool success = await Launcher.LaunchUriAsync(new Uri(((Item)e.ClickedItem).ItemURL));

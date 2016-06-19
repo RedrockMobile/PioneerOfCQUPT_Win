@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -31,13 +32,11 @@ namespace CommunistApp
             this.InitializeComponent();
             GetAllListData();
         }
-        string tempString;
         void GetAllListData()
         {
             GetNewsData("2");
             GetNewsData("3");
             GetNewsData("4");
-            GetNewsData("5");
         }
 
         async void GetNewsData(string id)
@@ -45,36 +44,52 @@ namespace CommunistApp
             List<KeyValuePair<String, String>> paramList = new List<KeyValuePair<String, String>>();
             paramList.Add(new KeyValuePair<string, string>("id", id));
             string uri = "http://202.202.43.42/lxyz/index.php?m=Home&c=index&a=mobilearticlelist";
-            tempString = await NetWork.getHttpWebRequest(uri, paramList, fulluri: true);
-
-
-            tempString.Replace("\r\n\r\n", " ");
-            tempString.Replace("&ldquo;", " ");
-            tempString.Replace("&rdquo;", " ");
-            tempString.Replace("&rdq", " ");
-
-            JObject jArray2 = (JObject)JsonConvert.DeserializeObject(tempString);
-            string json2 = jArray2["data"].ToString();
-            JArray jArray = (JArray)JsonConvert.DeserializeObject(json2);
-
-            List<NewsContent> newsContent = JsonConvert.DeserializeObject<List<NewsContent>>(jArray.ToString());
-
-            switch (id)
+            String tempString = Utils.ConvertUnicodeStringToChinese(await NetWork.getHttpWebRequest(uri, paramList, fulluri: true));
+            if (tempString != "")
             {
-                case "2":
-                    NewsList.ItemsSource = newsContent;
-                    break;
-                case "3":
-                    WorkList.ItemsSource = newsContent;
-                    break;
-                case "4":
-                    MoveList.ItemsSource = newsContent;
-                    break;
-                case "5":
-                    StudyList.ItemsSource = newsContent;
-                    break;
-            }
+                try
+                {
+                    JObject job = JObject.Parse(tempString);
+                    if (job["status"].ToString() == "200")
+                    {
+                        tempString = tempString.Replace("\\r", "");
+                        tempString = tempString.Replace("\\n", "");
+                        tempString = tempString.Replace("\\t", "");
+                        tempString = tempString.Replace("&ldquo;", "");
+                        tempString = tempString.Replace("&ldqu;", "");
+                        tempString = tempString.Replace("&ldq;", "");
+                        tempString = tempString.Replace("&ld;", "");
+                        tempString = tempString.Replace("&l;", "");
+                        tempString = tempString.Replace("&rdquo", " ");
+                        tempString = tempString.Replace("&rdqu", " ");
+                        tempString = tempString.Replace("&rdq", " ");
+                        tempString = tempString.Replace("&rd", " ");
+                        tempString = tempString.Replace("&r", " ");
 
+                        Debug.WriteLine(tempString);
+
+                        JObject jArray2 = (JObject)JsonConvert.DeserializeObject(tempString);
+                        string json2 = jArray2["data"].ToString();
+                        JArray jArray = (JArray)JsonConvert.DeserializeObject(json2);
+
+                        List<NewsContent> newsContent = JsonConvert.DeserializeObject<List<NewsContent>>(jArray.ToString());
+
+                        switch (id)
+                        {
+                            case "2":
+                                NewsList.ItemsSource = newsContent;
+                                break;
+                            case "3":
+                                WorkList.ItemsSource = newsContent;
+                                break;
+                            case "4":
+                                MoveList.ItemsSource = newsContent;
+                                break;
+                        }
+                    }
+                }
+                catch (Exception) { }
+            }
         }
 
         private void NewsList_ItemClick(object sender, ItemClickEventArgs e)

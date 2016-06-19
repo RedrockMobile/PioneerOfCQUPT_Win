@@ -31,7 +31,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions >
             <RowDefinition />
-            <RowDefinition Height="48"/>
+            <RowDefinition Height="58"/>
         </Grid.RowDefinitions>
         <Grid Name="contentGrid" Grid.Row="0" Grid.Column="1">
             <Frame Name="contentFrame"/>
@@ -60,7 +60,7 @@
                 </ListViewItem>
             </ListView>
         </Grid>
-        <Grid Name="BottomButtonGrid" Grid.Row="1" Grid.ColumnSpan="2">
+        <Grid Name="BottomButtonGrid" Margin="0,5" Grid.Row="1" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
