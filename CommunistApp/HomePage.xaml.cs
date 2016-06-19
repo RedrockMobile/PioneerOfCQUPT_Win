@@ -53,7 +53,7 @@ namespace CommunistApp
         public HomePage()
         {
             this.InitializeComponent();
-            SixItemGridView.ItemsSource = sixItem;
+            //SixItemGridView.ItemsSource = sixItem;
             GetPic();
 
         }
@@ -90,7 +90,35 @@ namespace CommunistApp
             public string imgurl { get; set; }
         }
 
+        private async void dzdgItemStackPanel_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            bool success = await Launcher.LaunchUriAsync(new Uri(sixItem[0].ItemURL));
+        }
 
+        private async void lxjhItemStackPanel_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            bool success = await Launcher.LaunchUriAsync(new Uri(sixItem[0].ItemURL));
+        }
+
+        private async void hgdyItemStackPanel_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            bool success = await Launcher.LaunchUriAsync(new Uri(sixItem[0].ItemURL));
+        }
+
+        private async void wlhdItemStackPanel_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            bool success = await Launcher.LaunchUriAsync(new Uri(sixItem[0].ItemURL));
+        }
+
+        private async void xjdxItemStackPanel_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            bool success = await Launcher.LaunchUriAsync(new Uri(sixItem[0].ItemURL));
+        }
+
+        private async void jdyxItemStackPanel_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            bool success = await Launcher.LaunchUriAsync(new Uri(sixItem[0].ItemURL));
+        }
     }
 }
 

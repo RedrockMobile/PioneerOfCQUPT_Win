@@ -14,50 +14,99 @@
         <converter:HomeGridViewItemWidthConverter x:Key="HomeGridViewItemWidthConverter"/>
     </Page.Resources>
     <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">-->
-    <Grid Background="#eee">
-        <Grid Name="HomeGrid" Background="White" MaxWidth="500" HorizontalAlignment="Center">
-            <Grid.RowDefinitions >
-                <RowDefinition Height="72"/>
-                <RowDefinition Height="3.5*"/>
-                <RowDefinition Height="7*"/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Background="#f96259" Name="SchoolPicGrid">
-                <Image Source="Assets/banner.png" Stretch="UniformToFill"/>
-                <TextBlock FontFamily="Microsoft YaHei UI" Foreground="White" Text="重邮先锋网“两学一做”学习专题网" FontSize="22" VerticalAlignment="Center" Margin="25"/>
-            </Grid>
-            <!--图片轮播-->
-            <Grid Grid.Row="1"  Margin="0,10,0,0">
-                <FlipView x:Name="fvCenter" Grid.Column="1">
-                    <FlipView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Image Source="{Binding imgurl}"  Stretch="UniformToFill"/>
-                                <Border Background="Black" Opacity="0.5" VerticalAlignment="Bottom">
-                                    <TextBlock 
+    <ScrollViewer>
+        <Grid Background="#eee">
+            <Grid Name="HomeGrid" Background="White" MaxWidth="500" HorizontalAlignment="Center">
+                <Grid.RowDefinitions >
+                    <RowDefinition Height="72"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="7*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Background="#f96259" Name="SchoolPicGrid">
+                    <Image Source="Assets/banner.png" Stretch="UniformToFill"/>
+                    <TextBlock FontFamily="Microsoft YaHei UI" Foreground="White" Text="重邮先锋网&quot;两学一做&quot;学习专题网" FontSize="22" VerticalAlignment="Center" Margin="25"/>
+                </Grid>
+                <!--图片轮播-->
+                <Grid Grid.Row="1"  Margin="0,10,0,0">
+                    <FlipView x:Name="fvCenter" Grid.Column="1">
+                        <FlipView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding imgurl}"  Stretch="UniformToFill"/>
+                                    <Border Background="Black" Opacity="0.5" VerticalAlignment="Bottom">
+                                        <TextBlock 
                                     Text="{Binding title}"
                                     FontFamily="Microsoft YaHei UI" 
                                     FontSize="12" 
                                     Foreground="White" Padding="12"/>
-                                </Border>
-                            </Grid>
-                        </DataTemplate>
-                    </FlipView.ItemTemplate>
-                </FlipView>
-            </Grid>
-            <!--6个grid-->
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </FlipView.ItemTemplate>
+                    </FlipView>
+                </Grid>
+
+                <Grid Grid.Row="2" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Name="dzdgItemStackPanel" Margin="20" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Tapped="dzdgItemStackPanel_Tapped">
+                        <Image Source="Assets/ItemPic/5.png" Width="60" HorizontalAlignment="Center"/>
+                        <TextBlock Text="学党章党规" Foreground="#989898" Margin="0,10,0,0" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Name="lxjhItemStackPanel" Margin="20" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Tapped="lxjhItemStackPanel_Tapped">
+                        <Image Source="Assets/ItemPic/1.png" Width="60" HorizontalAlignment="Center"/>
+                        <TextBlock Text="学系列讲话" Foreground="#989898" Margin="0,10,0,0" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Name="hgdyItemStackPanel" Margin="20" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Tapped="hgdyItemStackPanel_Tapped">
+                        <Image Source="Assets/ItemPic/6.png" Width="60" HorizontalAlignment="Center"/>
+                        <TextBlock Text="做合格党员" Foreground="#989898" Margin="0,10,0,0" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Name="wlhdItemStackPanel" Margin="20" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Tapped="wlhdItemStackPanel_Tapped">
+                        <Image Source="Assets/ItemPic/4.png" Width="60" HorizontalAlignment="Center"/>
+                        <TextBlock Text="网络活动" Foreground="#989898" Margin="0,10,0,0" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Name="xjdxItemStackPanel" Margin="20" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Tapped="xjdxItemStackPanel_Tapped">
+                        <Image Source="Assets/ItemPic/2.png" Width="60" HorizontalAlignment="Center"/>
+                        <TextBlock Text="先进典型" Foreground="#989898" Margin="0,10,0,0" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Name="jdyxItemStackPanel" Margin="20" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Tapped="jdyxItemStackPanel_Tapped">
+                        <Image Source="Assets/ItemPic/3.png" Width="60" HorizontalAlignment="Center"/>
+                        <TextBlock Text="经典影像" Foreground="#989898" Margin="0,10,0,0" HorizontalAlignment="Center"></TextBlock>
+                    </StackPanel>
+
+                    <Line X1="0" X2="500" Grid.ColumnSpan="3" Grid.Row="0" Stroke="#EBEBEB" StrokeThickness="2" VerticalAlignment="Bottom"/>
+                    <Line X1="0" X2="500" Grid.ColumnSpan="3" Grid.Row="1" Stroke="#EBEBEB" StrokeThickness="2" VerticalAlignment="Bottom"/>
+                    <Line Y1="0" Y2="260" Grid.RowSpan="2" Grid.Column="0" Stroke="#EBEBEB" StrokeThickness="2" HorizontalAlignment="Right"/>
+                    <Line Y1="0" Y2="260" Grid.RowSpan="2" Grid.Column="1" Stroke="#EBEBEB" StrokeThickness="2" HorizontalAlignment="Right"/>
+                    <Line Y1="0" Y2="260" Grid.RowSpan="2" Grid.Column="2" Stroke="#EBEBEB" StrokeThickness="2" HorizontalAlignment="Right"/>
+                </Grid>
+
+                <!--6个grid-->
+                <!--
             <Grid Grid.Row="2" Background="White"  Margin="20,20,20,0" HorizontalAlignment="Center">
                 <GridView  ScrollViewer.VerticalScrollBarVisibility="Hidden" Name="SixItemGridView" IsItemClickEnabled="True" SelectionMode="None" ItemClick="SixItem_ItemClick">
                     <GridView.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="5">
-                                <!--<Rectangle Height="150" Width="{Binding Width, Converter={StaticResource HomeGridViewItemWidthConverter}, ElementName=SixItemGridView, Mode=OneWay}" Fill="Red" StrokeThickness="3" RadiusX="10" RadiusY="10"/>-->
+                                -->
+                <!--<Rectangle Height="150" Width="{Binding Width, Converter={StaticResource HomeGridViewItemWidthConverter}, ElementName=SixItemGridView, Mode=OneWay}" Fill="Red" StrokeThickness="3" RadiusX="10" RadiusY="10"/>-->
+                <!--
                                 <Rectangle Height="120" Width="120" Fill="Red" StrokeThickness="3" RadiusX="10" RadiusY="10"/>
                                 <TextBlock Name="HomeItemTextBlock" Text="{Binding ItemName}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Foreground="White" FontFamily="Microsoft YaHei UI" FontSize="20"/>
                             </Grid>
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>
+            </Grid>-->
             </Grid>
         </Grid>
-    </Grid>
+    </ScrollViewer>
 </Page>

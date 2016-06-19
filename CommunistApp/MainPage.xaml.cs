@@ -41,7 +41,7 @@ namespace CommunistApp
             if (Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.UI.ViewManagement.StatusBar"))
             {
                 Utils.ShowSystemTrayAsync(Color.FromArgb(255, 247, 59, 53), Colors.White);
-            }s
+            }
             else
             {
                 var view = ApplicationView.GetForCurrentView();
