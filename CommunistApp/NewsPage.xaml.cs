@@ -147,9 +147,9 @@ namespace CommunistApp
                         string json2 = jArray2["data"].ToString();
                         JArray jArray = (JArray)JsonConvert.DeserializeObject(json2);
                         newsContentNew = JsonConvert.DeserializeObject<ObservableCollection<NewsContent>>(jArray.ToString());
-                        if (newsContentNew.Count == 0)
+                        if (newsContentNew.Count != 0)
                         {
-                            HasNoNewItem = true;
+                            HasNoNewItem = false;
                         }
                     }
                 }
@@ -157,7 +157,7 @@ namespace CommunistApp
             }
             return newsContentNew;
         }
-        bool HasNoNewItem = false;
+        bool HasNoNewItem = true;
         ObservableCollection<NewsContent> tempList = new ObservableCollection<NewsContent>();
         private void NewsList_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -210,6 +210,11 @@ namespace CommunistApp
                 }
                 tempList.Clear();
             }
+            if (News.VerticalOffset == News.ScrollableHeight && HasNoNewItem)
+            {
+                NotifyPopup notifyPopup = new NotifyPopup("没有更多内容了哦~");
+                notifyPopup.Show();
+            }
         }
 
         private async void Move_ViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
@@ -224,6 +229,11 @@ namespace CommunistApp
                     newsContent.Add(item);
                 }
                 tempList.Clear();
+            }
+            if (News.VerticalOffset == News.ScrollableHeight && HasNoNewItem)
+            {
+                NotifyPopup notifyPopup = new NotifyPopup("没有更多内容了哦~");
+                notifyPopup.Show();
             }
         }
     }
