@@ -14,7 +14,7 @@
         <converter:HomeGridViewItemWidthConverter x:Key="HomeGridViewItemWidthConverter"/>
     </Page.Resources>
     <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">-->
-    <ScrollViewer>
+    <ScrollViewer VerticalScrollBarVisibility ="Hidden">
         <Grid Background="#eee">
             <Grid Name="HomeGrid" Background="White" MaxWidth="500" HorizontalAlignment="Center">
                 <Grid.RowDefinitions >

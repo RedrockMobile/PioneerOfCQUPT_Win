@@ -38,7 +38,7 @@
         </Grid>
         <Grid Name="LeftButtonGrid" Grid.Row="0" Grid.RowSpan="2">
             <ListView>
-                <ListViewItem Width="48" Height="48" Tapped="MainPagePanel_Tapped">
+                <ListViewItem Width="48" Height="48" Tapped="MainPagePanel_Tapped" >
                     <StackPanel Name="LMainPagePanel" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Column="0" Tapped="MainPagePanel_Tapped">
                         <TextBlock Name="LMainPageIcon" FontSize="20" FontFamily="Segoe MDL2 Assets" Text ="&#xE80F;" Foreground="#f96259"/>
                     </StackPanel>

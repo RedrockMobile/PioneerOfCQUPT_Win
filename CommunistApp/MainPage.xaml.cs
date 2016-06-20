@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
+using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -50,7 +51,10 @@ namespace CommunistApp
                 view.TitleBar.ButtonHoverBackgroundColor = Color.FromArgb(255, 234, 53, 48);
                 view.TitleBar.ButtonPressedBackgroundColor = Color.FromArgb(255, 206, 47, 42);
             }
+       
         }
+       
+
         //忘了咋用blend 暂时这么着吧
         //Panel_Tap后类似于切换状态
         void CanelColorEvent()
