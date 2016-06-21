@@ -68,14 +68,14 @@ namespace CommunistApp
                         //content = content.Replace("&lt;strong", "<strong");
                         //content = content.Replace("&lt;/strong&gt;", "</strong>");
 
-                        content = content.Replace("&lt;", "<");
+                       /* content = content.Replace("&lt;", "<");
                         content = content.Replace("&gt;", ">");
 
                         content = content.Replace("&amp;nbsp;", " ");
                         content = content.Replace("&amp;ldquo;", "\"");
                         content = content.Replace("&amp;rdquo;", "\"");
                         content = content.Replace("&quot;", "\"");
-                        Debug.WriteLine(content);
+                        Debug.WriteLine(content);*/
                         ContentWebView.NavigateToString(content);
                     }
 
