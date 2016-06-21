@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -39,11 +40,11 @@ namespace CommunistApp
             {
                 e.Handled = true;
                 Frame.GoBack();
-            }        
+            }
         }
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            
+
             var itemId = (NewsContent)e.Parameter;
             TitleTextBlock.Text = itemId.title;
             TimeTextBlock.Text = itemId.time;
@@ -53,9 +54,26 @@ namespace CommunistApp
             String tempString = Utils.ConvertUnicodeStringToChinese(await NetWork.getHttpWebRequest(uri, paramList, fulluri: true));
 
             JObject newsContentobj = JObject.Parse(tempString);
-            
-                string content = (JObject.Parse(newsContentobj["data"].ToString()))["content"].ToString();
-                ContentWebView.NavigateToString(content);
+
+            string content = (JObject.Parse(newsContentobj["data"].ToString()))["content"].ToString();
+            Debug.WriteLine(content);
+            //content = content.Replace("&lt;p;", "<p");
+            //content = content.Replace("&lt;/p&gt;", "</p>");
+            //content = content.Replace("&lt;span", "<span");
+            //content = content.Replace("&lt;/span&gt;", "</span>");
+            //content = content.Replace("&lt;strong", "<strong");
+            //content = content.Replace("&lt;/strong&gt;", "</strong>");
+
+            content = content.Replace("&lt;", "<");
+            content = content.Replace("&lt;/", "</");
+            content = content.Replace("&gt;", ">");
+
+            content = content.Replace("&amp;nbsp;", " ");
+            content = content.Replace("&amp;ldquo;", "\"");
+            content = content.Replace("&amp;rdquo;", "\"");
+            content = content.Replace("&quot;", "\"");
+            Debug.WriteLine(content);
+            ContentWebView.NavigateToString(content);
 
 
             //JObject jArray2 = (JObject)JsonConvert.DeserializeObject(tempString);
