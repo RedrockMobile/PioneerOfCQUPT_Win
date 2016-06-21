@@ -27,15 +27,15 @@
         <Pivot Name="NewsPivot" Grid.Row="1">
             <PivotItem >
                 <PivotItem.Header>
-                    <TextBlock Text="通知公告"></TextBlock>
+                    <TextBlock Text="通知公告" FontSize="17"></TextBlock>
                 </PivotItem.Header>
                 <ScrollViewer Name="News" VerticalScrollBarVisibility="Hidden" ViewChanged="ScrollViewer_ViewChanged">
                     <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="-12,0" Name="NewsList" SelectionMode="None" IsItemClickEnabled="True" ItemClick="NewsList_ItemClick">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
-                        </Style>
-                    </ListView.ItemContainerStyle>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
                         <ListView.ItemTemplate>
                             <DataTemplate >
                                 <Grid >
@@ -62,7 +62,7 @@
             </PivotItem>
             <PivotItem >
                 <PivotItem.Header>
-                    <TextBlock Text="工作动态"></TextBlock>
+                    <TextBlock Text="工作动态" FontSize="17"></TextBlock>
                 </PivotItem.Header>
                 <ScrollViewer Name="Work" VerticalScrollBarVisibility="Hidden" ViewChanged="Work_ViewChanged">
                     <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="-12,0"  Name="WorkList" SelectionMode="None" IsItemClickEnabled="True" ItemClick="NewsList_ItemClick">
@@ -92,7 +92,7 @@
             </PivotItem>
             <PivotItem >
                 <PivotItem.Header>
-                    <TextBlock Text="基层行动"></TextBlock>
+                    <TextBlock Text="基层行动" FontSize="17"></TextBlock>
                 </PivotItem.Header>
                 <ScrollViewer Name="Move" VerticalScrollBarVisibility="Hidden" ViewChanged="Move_ViewChanged">
                     <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="-12,0"  Name="MoveList" SelectionMode="None" IsItemClickEnabled="True" ItemClick="NewsList_ItemClick">
