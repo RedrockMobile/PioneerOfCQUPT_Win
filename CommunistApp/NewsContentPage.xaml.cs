@@ -52,27 +52,37 @@ namespace CommunistApp
             paramList.Add(new KeyValuePair<string, string>("id", itemId.id));
             string uri = "http://202.202.43.42/lxyz/index.php?m=Home&c=Article&a=mobilearticle";
             String tempString = Utils.ConvertUnicodeStringToChinese(await NetWork.getHttpWebRequest(uri, paramList, fulluri: true));
+            if (tempString != "")
+            {
+                try
+                {
+                    JObject newsContentobj = JObject.Parse(tempString);
+                    if (newsContentobj["status"].ToString() == "200")
+                    {
+                        string content = (JObject.Parse(newsContentobj["data"].ToString()))["content"].ToString();
+                        Debug.WriteLine(content);
+                        //content = content.Replace("&lt;p;", "<p");
+                        //content = content.Replace("&lt;/p&gt;", "</p>");
+                        //content = content.Replace("&lt;span", "<span");
+                        //content = content.Replace("&lt;/span&gt;", "</span>");
+                        //content = content.Replace("&lt;strong", "<strong");
+                        //content = content.Replace("&lt;/strong&gt;", "</strong>");
 
-            JObject newsContentobj = JObject.Parse(tempString);
+                        content = content.Replace("&lt;", "<");
+                        content = content.Replace("&gt;", ">");
 
-            string content = (JObject.Parse(newsContentobj["data"].ToString()))["content"].ToString();
-            Debug.WriteLine(content);
-            //content = content.Replace("&lt;p;", "<p");
-            //content = content.Replace("&lt;/p&gt;", "</p>");
-            //content = content.Replace("&lt;span", "<span");
-            //content = content.Replace("&lt;/span&gt;", "</span>");
-            //content = content.Replace("&lt;strong", "<strong");
-            //content = content.Replace("&lt;/strong&gt;", "</strong>");
+                        content = content.Replace("&amp;nbsp;", " ");
+                        content = content.Replace("&amp;ldquo;", "\"");
+                        content = content.Replace("&amp;rdquo;", "\"");
+                        content = content.Replace("&quot;", "\"");
+                        Debug.WriteLine(content);
+                        ContentWebView.NavigateToString(content);
+                    }
 
-            content = content.Replace("&lt;", "<");
-            content = content.Replace("&gt;", ">");
+                }
+                catch (Exception) { }
+            }
 
-            content = content.Replace("&amp;nbsp;", " ");
-            content = content.Replace("&amp;ldquo;", "\"");
-            content = content.Replace("&amp;rdquo;", "\"");
-            content = content.Replace("&quot;", "\"");
-            Debug.WriteLine(content);
-            ContentWebView.NavigateToString(content);
 
 
             //JObject jArray2 = (JObject)JsonConvert.DeserializeObject(tempString);

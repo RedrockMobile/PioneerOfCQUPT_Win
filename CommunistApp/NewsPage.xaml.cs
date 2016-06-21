@@ -190,10 +190,10 @@ namespace CommunistApp
                 }
                 tempList.Clear();
             }
-            if (News.VerticalOffset == News.ScrollableHeight&& HasNoNewItem)
-            {              
-               NotifyPopup notifyPopup = new NotifyPopup("没有更多内容了哦~");
-               notifyPopup.Show();              
+            if (News.VerticalOffset == News.ScrollableHeight && HasNoNewItem)
+            {
+                NotifyPopup notifyPopup = new NotifyPopup("没有更多内容了哦~");
+                notifyPopup.Show();
             }
         }
 
