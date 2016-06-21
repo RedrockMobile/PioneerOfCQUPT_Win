@@ -65,7 +65,6 @@ namespace CommunistApp
             //content = content.Replace("&lt;/strong&gt;", "</strong>");
 
             content = content.Replace("&lt;", "<");
-            content = content.Replace("&lt;/", "</");
             content = content.Replace("&gt;", ">");
 
             content = content.Replace("&amp;nbsp;", " ");
