@@ -8,26 +8,49 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+       
+       
         <Grid.RowDefinitions >
-            <RowDefinition Height="35"/>
+            <RowDefinition Height="85"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="Crimson" BorderThickness="0" Margin="0,0,0,-50">
+       
+        <Grid Grid.Row="0" Grid.Column="0" Background="Crimson" BorderThickness="0" >
             <TextBlock Text="学习心得分享" Foreground="Azure"
-                       FontFamily="Microsoft YaHei UI" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25"/>
+                       FontFamily="Microsoft YaHei UI" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center" FontSize="25"/>
         </Grid>
-        <Grid Grid.Row="1">
-            <ListView >
+        <Grid Name="NewsListGrid" Grid.Column="0" Grid.Row="1">
+            <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden" Grid.Row="1" Name="NewsList" SelectionMode="None" IsItemClickEnabled="True" ItemClick="NewsList_ItemClick">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <DataTemplate >
-                        <Grid Margin="10">
-                            <TextBlock Name="name"/>
-                            <TextBlock Name="date"/>
-                            <TextBlock Name="content"/>
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <!--标题-->
+                            <TextBlock Margin="0,10,0,5" Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding title}" FontFamily="Microsoft YaHei UI" TextTrimming="WordEllipsis" FontSize="20"/>
+                            <!--内容概要-->
+                            <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,5" Text="{Binding content}" FontFamily="Microsoft YaHei UI" FontSize="15" MaxLines="2" TextWrapping="Wrap" TextTrimming="WordEllipsis" Foreground="DarkGray"/>
+                            <!--日期-->
+                            <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding time}" VerticalAlignment="Bottom" Margin="5" FontFamily="Microsoft YaHei UI" Foreground="DarkGray" TextTrimming="WordEllipsis" FontSize="13"/>
+                            <Line Margin="-12,0" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" X1="0" X2="1200" Y1="0" Y2="1" Height="1" VerticalAlignment="Bottom" Stroke="#E6E6E6" StrokeThickness="1"></Line>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
+        
     </Grid>
 </Page>

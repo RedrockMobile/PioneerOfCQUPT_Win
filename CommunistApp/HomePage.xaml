@@ -9,10 +9,10 @@
     mc:Ignorable="d"
     Background="#eee">
 
-    <Page.Resources>
+    <!--<Page.Resources>
         <converter:HomeGridViewItemHeightConverter x:Key="HomeGridViewItemHeightConverter"/>
         <converter:HomeGridViewItemWidthConverter x:Key="HomeGridViewItemWidthConverter"/>
-    </Page.Resources>
+    </Page.Resources>-->
     <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">-->
     <ScrollViewer VerticalScrollBarVisibility ="Hidden">
         <Grid Background="#eee">
@@ -91,24 +91,6 @@
                     <Line Y1="0" Y2="260" Grid.RowSpan="2" Grid.Column="1" Stroke="#EBEBEB" StrokeThickness="2" HorizontalAlignment="Right"/>
                     <Line Y1="0" Y2="260" Grid.RowSpan="2" Grid.Column="2" Stroke="#EBEBEB" StrokeThickness="2" HorizontalAlignment="Right"/>
                 </Grid>
-
-                <!--6个grid-->
-                <!--
-            <Grid Grid.Row="2" Background="White"  Margin="20,20,20,0" HorizontalAlignment="Center">
-                <GridView  ScrollViewer.VerticalScrollBarVisibility="Hidden" Name="SixItemGridView" IsItemClickEnabled="True" SelectionMode="None" ItemClick="SixItem_ItemClick">
-                    <GridView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Margin="5">
-                                -->
-                <!--<Rectangle Height="150" Width="{Binding Width, Converter={StaticResource HomeGridViewItemWidthConverter}, ElementName=SixItemGridView, Mode=OneWay}" Fill="Red" StrokeThickness="3" RadiusX="10" RadiusY="10"/>-->
-                <!--
-                                <Rectangle Height="120" Width="120" Fill="Red" StrokeThickness="3" RadiusX="10" RadiusY="10"/>
-                                <TextBlock Name="HomeItemTextBlock" Text="{Binding ItemName}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Foreground="White" FontFamily="Microsoft YaHei UI" FontSize="20"/>
-                            </Grid>
-                        </DataTemplate>
-                    </GridView.ItemTemplate>
-                </GridView>
-            </Grid>-->
             </Grid>
         </Grid>
     </ScrollViewer>

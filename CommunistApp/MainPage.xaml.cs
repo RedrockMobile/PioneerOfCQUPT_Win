@@ -51,7 +51,8 @@ namespace CommunistApp
                 view.TitleBar.ButtonHoverBackgroundColor = Color.FromArgb(255, 234, 53, 48);
                 view.TitleBar.ButtonPressedBackgroundColor = Color.FromArgb(255, 206, 47, 42);
             }
-       
+            
+            LeftButtonGrid.Background = new SolidColorBrush(Color.FromArgb(255, 243, 243, 245));
         }
        
 

@@ -33,20 +33,45 @@ namespace CommunistApp
     {
         public NewsPage()
         {
+
             this.InitializeComponent();
             GetAllListData();
-            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
-            SystemNavigationManager.GetForCurrentView().BackRequested -= App_BackRequested;
+            this.SizeChanged += (s, e) =>
+            {
+                var state = "VisualState";
+                var state1 = "VisualState500";
+                if (e.NewSize.Width <= 800)
+                {
+                    if (NewsContentFrame.Visibility == Visibility.Visible)
+                    {
+                        SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
+                        SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+                        NewsListGrid.Width = e.NewSize.Width;
+                        VisualStateManager.GoToState(this, state, true);
+                    }
+                    NewsListGrid.Width = e.NewSize.Width;
+                }
+                else if (e.NewSize.Width > 800)
+                {
+                    NewsListGrid.Width = 400;
+                    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
+                    SystemNavigationManager.GetForCurrentView().BackRequested -= App_BackRequested;
+                    VisualStateManager.GoToState(this, state1, true);
+                }
+                cutoffLine.Y2 = e.NewSize.Height;
+            };
+
         }
         private void App_BackRequested(object sender, BackRequestedEventArgs e)
         {
-
+            SystemNavigationManager.GetForCurrentView().BackRequested -= App_BackRequested;
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
+            NewsContentFrame.Visibility = Visibility.Collapsed;
             if (e.Handled == false && Frame.CanGoBack)
             {
                 e.Handled = true;
                 Frame.GoBack();
             }
-
         }
         void GetAllListData()
         {
@@ -92,7 +117,6 @@ namespace CommunistApp
                         JArray jArray = (JArray)JsonConvert.DeserializeObject(json2);
 
                         newsContent = JsonConvert.DeserializeObject<ObservableCollection<NewsContent>>(jArray.ToString());
-
 
                         switch (id)
                         {
@@ -162,7 +186,17 @@ namespace CommunistApp
         private void NewsList_ItemClick(object sender, ItemClickEventArgs e)
         {
             var itemId = (NewsContent)e.ClickedItem;
-            this.Frame.Navigate(typeof(NewsContentPage), itemId);
+            NewsContentFrame.Visibility = Visibility.Visible;
+            if (Window.Current.Bounds.Width > 550)
+            {
+                this.NewsContentFrame.Navigate(typeof(NewsContentPage), itemId);
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
+                SystemNavigationManager.GetForCurrentView().BackRequested -= App_BackRequested;
+            }
+            else
+                this.Frame.Navigate(typeof(NewsContentPage), itemId);
+            //this.Frame.Navigate(typeof(NewsContentPage), itemId);
+
         }
         double NewsOldScrollableHeight = 0;
         double WorkOldScrollableHeight = 0;

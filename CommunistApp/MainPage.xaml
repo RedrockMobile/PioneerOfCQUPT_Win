@@ -83,7 +83,7 @@
             </StackPanel>
             <StackPanel Name="PersonalPagePanel" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Column="3" Tapped="PersonalPagePanel_Tapped">
                 <TextBlock Name="PersonalPageIcon" FontSize="30" FontFamily="Segoe MDL2 Assets" Text ="&#xE8D4;" Foreground="DarkGray"/>
-                <TextBlock Name="PersonalPageWord" FontFamily="YouYuan" Text="我的" FontSize="15" Foreground="DarkGray"/>
+                <TextBlock Name="PersonalPageWord" FontFamily="YouYuan" Text="关于" FontSize="15" Foreground="DarkGray"/>
             </StackPanel>
         </Grid>
     </Grid>
